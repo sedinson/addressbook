@@ -47,7 +47,7 @@
           }
         }
         
-        $( "#list" ).trigger("create");
+        $( "#list" ).collapsibleset("refresh");
     };
 
     // onError: Failed to get the contacts
@@ -69,11 +69,5 @@
         </div>
       </div>
     </div>
-    
-    <script>
-      $(function () {
-        $( "#list" ).collapsibleset({ mini: true });
-      });
-    </script>
   </body>
 </html>
