@@ -18,7 +18,7 @@
         var options = new ContactFindOptions();
         options.filter = "";      // empty search string returns all contacts
         options.multiple = true;  // return multiple results
-        filter = ["displayName"]; // return contact.displayName field
+        filter = ["displayName", "name", "nickname", "phoneNumbers"]; // return contact.displayName field
 
         // find contacts
         navigator.contacts.find(filter, onSuccess, onError, options);
