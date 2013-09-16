@@ -32,6 +32,7 @@
     function onSuccess(contacts) {
         for (var i=0; i<contacts.length; i++) {
           if(contacts[i].phoneNumbers) {
+            $("#list").html("");
             $("#list").append("<div data-role=\"collapsible\">");
             $("#list").append("<h3>" + contacts[i].displayName + "</h3>");
             $("#list").append("<p>" + contacts[i].name.formatted);
@@ -46,11 +47,7 @@
           }
         }
         
-        $("#list").collapsibleset({
-          create: function( event, ui ) {
-            alert("Data loaded!");
-          }
-        });
+        $( ".selector" ).collapsibleset( "refresh" );
     };
 
     // onError: Failed to get the contacts
