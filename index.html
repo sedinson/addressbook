@@ -34,7 +34,7 @@
           if(contacts[i].phoneNumbers) {
             $("#list").append("<div data-role=\"collapsible\">");
             $("#list").append("<h3>" + contacts[i].displayName + "</h3>");
-            $("#list").append("<p>" + contacts[i].name.formatted + "</p>");
+            $("#list").append("<p>" + contacts[i].name.formatted);
             $("#list").append("<ul>");
             
             for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
@@ -42,11 +42,15 @@
               $("#list").append("<li><b>" + phone.type + ":</b>" + phone.value + ((phone.pref)? " - [x]" : " - [ ]") + "</li>");
             }
             
-            $("#list").append("</ul></div>");
+            $("#list").append("</ul></p></div>");
           }
         }
         
-        $("#list").collapsibleset( "refresh" );
+        $("#list").collapsibleset({
+          create: function( event, ui ) {
+            alert("Data loaded!");
+          }
+        });
     };
 
     // onError: Failed to get the contacts
@@ -63,7 +67,9 @@
         <h1>Lista de Contactos</h1>
       </div>
       <div data-role="content">
-        <div data-role="collapsible-set" id="list"></div>
+        <div data-role="collapsible-set" id="list">
+          Loading contact information...
+        </div>
       </div>
     </div>
     
