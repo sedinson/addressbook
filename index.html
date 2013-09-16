@@ -30,24 +30,26 @@
     // onSuccess: Get a snapshot of the current contacts
     //
     function onSuccess(contacts) {
-        $("#list").html("");
+      var list = $("#list");
+        list.html("");
         for (var i=0; i<contacts.length; i++) {
           if(contacts[i].phoneNumbers) {
-            $("#list").append("<div data-role=\"collapsible\">");
-            $("#list").append("<h3>" + contacts[i].displayName + "</h3>");
-            $("#list").append("<p>" + contacts[i].name.formatted);
-            $("#list").append("<ul data-role=\"listview\">");
+            list.append('<div data-role="collapsible">');
+            list.append("<h3>" + contacts[i].displayName + "</h3>");
+            //list.append("<p>" + contacts[i].name.formatted);
+            
+            var internal = $('<ul data-role="listview" data-divider-theme="b"></ul>');
             
             for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
               var phone = contacts[i].phoneNumbers[j];
-              $("#list").append("<li><b>" + phone.type + ":</b>" + phone.value + ((phone.pref)? " - [x]" : " - [ ]") + "</li>");
+              internal.append("<li><b>" + phone.type + ":</b>" + phone.value) + "</li>");
             }
-            
-            $("#list").append("</ul></p></div>");
+            internal.trigger("create");
+            list.append(internal);
           }
         }
         
-        $( "#list" ).collapsibleset("refresh");
+        list.collapsibleset("refresh");
     };
 
     // onError: Failed to get the contacts
