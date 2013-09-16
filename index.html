@@ -31,11 +31,13 @@
     //
     function onSuccess(contacts) {
       var list = $("#list");
+      alert("Contacts Loaded!");
+        
         list.html("");
         for (var i=0; i<contacts.length; i++) {
           if(contacts[i].phoneNumbers) {
-            list.append('<div data-role="collapsible">');
-            list.append("<h3>" + contacts[i].displayName + "</h3>");
+            var collap = $('<div data-role="collapsible"></div>');
+            collap.append("<h3>" + contacts[i].displayName + "</h3>");
             //list.append("<p>" + contacts[i].name.formatted);
             
             var internal = $('<ul data-role="listview" data-divider-theme="b"></ul>');
@@ -44,8 +46,10 @@
               var phone = contacts[i].phoneNumbers[j];
               internal.append("<li><b>" + phone.type + ":</b>" + phone.value) + "</li>");
             }
+            
             internal.trigger("create");
-            list.append(internal);
+            collap.append(internal);
+            list.append(collap);
           }
         }
         
