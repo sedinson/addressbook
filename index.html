@@ -31,7 +31,7 @@
           var name = (contacts[i].displayName)? contacts[i].displayName : contacts[i].name;
           $("#list").append("<h3>" + name + "</h3>");
           $("#list").append("<ul>");
-          for(var j in contacts[i].phoneNumbers) {
+          for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
             var phone = contacts[i].phoneNumbers[j];
             $("#list").append("<li><b>" + phone.type + ":</b>" + phone.value + ((phone.pref)? "[x]" : "[ ]") + "</li>");
           }
