@@ -30,13 +30,13 @@
     // onSuccess: Get a snapshot of the current contacts
     //
     function onSuccess(contacts) {
+        $("#list").html("");
         for (var i=0; i<contacts.length; i++) {
           if(contacts[i].phoneNumbers) {
-            $("#list").html("");
             $("#list").append("<div data-role=\"collapsible\">");
             $("#list").append("<h3>" + contacts[i].displayName + "</h3>");
             $("#list").append("<p>" + contacts[i].name.formatted);
-            $("#list").append("<ul>");
+            $("#list").append("<ul data-role=\"listview\">");
             
             for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
               var phone = contacts[i].phoneNumbers[j];
