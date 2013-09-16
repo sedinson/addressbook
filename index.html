@@ -4,6 +4,7 @@
     <title>Contact Example</title>
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // Wait for device API libraries to load
@@ -27,7 +28,7 @@
     //
     function onSuccess(contacts) {
         for (var i=0; i<contacts.length; i++) {
-            alert(contacts[i].displayName);
+            $("#list").append("<li>" + contacts[i].displayName + "</li>");
         }
     };
 
@@ -40,7 +41,7 @@
     </script>
   </head>
   <body>
-    <h1>Example</h1>
-    <p>Find Contacts</p>
+    <p>Contact List</p>
+    <ul id="list"></ul>
   </body>
 </html>
