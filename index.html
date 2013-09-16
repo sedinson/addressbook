@@ -27,8 +27,9 @@
     // onSuccess: Get a snapshot of the current contacts
     //
     function onSuccess(contacts) {
+      $("#init").html(JSON.stringify(contacts));
         for (var i=0; i<contacts.length; i++) {
-          var name = (contacts[i].displayName)? contacts[i].displayName : contacts[i].name;
+          var name = (contacts[i].displayName)? contacts[i].displayName : contacts[i].nickname;
           $("#list").append("<h3>" + name + "</h3>");
           $("#list").append("<ul>");
           if(contacts[i].phoneNumbers) {
